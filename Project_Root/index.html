@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Iso-Roguelike-Demo</title>
+    <style>
+        /* 清除浏览器默认边距，防止出现滚动条 */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; overflow: hidden; }
+        #game-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+        canvas { box-shadow: 0 0 20px rgba(0,0,0,0.8); }
+    </style>
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+</head>
+<body>
+    <div id="game-container"></div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
