@@ -3,16 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Iso-Roguelike-Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
-        /* 清除浏览器默认边距，防止出现滚动条 */
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; overflow: hidden; }
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; background-color: #000; overflow: hidden; touch-action: none; }
         #game-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
         canvas { box-shadow: 0 0 20px rgba(0,0,0,0.8); }
+        
+        /* 虚拟摇杆 UI */
+        #joystick-zone {
+            position: absolute; bottom: 10%; left: 10%; width: 150px; height: 150px;
+            background: rgba(255, 255, 255, 0.1); border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%; backdrop-filter: blur(4px); display: none; z-index: 1000;
+        }
+        #joystick-knob {
+            position: absolute; top: 50%; left: 50%; width: 60px; height: 60px;
+            background: rgba(255, 255, 255, 0.5); border-radius: 50%;
+            transform: translate(-50%, -50%); pointer-events: none;
+        }
+        
+        /* 移动端显示摇杆 */
+        @media (hover: none) and (pointer: coarse) {
+            #joystick-zone { display: block; }
+        }
     </style>
     <script src="https://pixijs.download/release/pixi.min.js"></script>
 </head>
 <body>
     <div id="game-container"></div>
+    <div id="joystick-zone"><div id="joystick-knob"></div></div>
     <script type="module" src="./src/main.js"></script>
 </body>
 </html>
